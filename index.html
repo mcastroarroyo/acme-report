@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME Agentic AI Readiness Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            border-left: 4px solid #FF3A20;
+        }
+        .flowchart-step {
+            position: relative;
+            padding: 1rem;
+            background-color: #ffffff;
+            border: 2px solid #001F3F;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .flowchart-step:hover {
+            transform: translateY(-5px);
+        }
+        .flowchart-arrow {
+            position: absolute;
+            top: 50%;
+            right: -2.5rem;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2px;
+            background-color: #001F3F;
+        }
+        .flowchart-arrow::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: -4px;
+            border: solid #001F3F;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(-45deg);
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #0074D9;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: 0.25rem;
+            transform: translateX(-48%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FF3A20;
+            border: 4px solid #F3F4F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-[#001F3F] text-white p-6 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight">ACME Corporation</h1>
+            <p class="text-xl mt-2 text-[#7FDBFF]">Agentic AI Readiness Report: Executive Infographic</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="executive-summary" class="mb-12">
+            <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold text-[#001F3F]">The Verdict: An AI Starter with Pockets of Excellence</h2>
+                <p class="text-6xl font-extrabold text-[#0074D9] my-4">58<span class="text-4xl">/100</span></p>
+                <p class="max-w-3xl mx-auto text-lg">ACME has a strong executive vision for AI but is held back by foundational gaps in data, technology, and governance. The path forward requires a dual-track approach: executing targeted pilots while simultaneously remediating core deficiencies.</p>
+            </div>
+        </section>
+
+        <section id="readiness-scores" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Overall Readiness Breakdown</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Our assessment evaluated ACME across five critical domains. The radar chart below visualizes the imbalance between the strong strategic ambition and the developing foundational capabilities.</p>
+                <div class="chart-container h-[40vh] md:h-96">
+                    <canvas id="readinessRadarChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="kpis" class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
+                <h4 class="text-xl font-bold text-[#001F3F]">High-Impact Opportunity</h4>
+                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">>80%</p>
+                <p class="text-gray-600">Potential reduction in manual invoice processing time with the top-ranked AI pilot project.</p>
+            </div>
+            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
+                <h4 class="text-xl font-bold text-[#001F3F]">Projected Pilot ROI</h4>
+                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">>2x</p>
+                <p class="text-gray-600">Return on investment projected within 18 months for the "Autonomous Invoice Processing Agent".</p>
+            </div>
+            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
+                <h4 class="text-xl font-bold text-[#001F3F]">Critical Blocker</h4>
+                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">5/5</p>
+                <p class="text-gray-600">Technical debt score for the legacy CRM, making its modernization a high-priority dependency.</p>
+            </div>
+        </section>
+
+        <section id="use-case-prioritization" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Prioritizing the Path to Value</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">We analyzed potential AI use cases based on their business impact (TII Score) and implementation feasibility. The bubble chart below visualizes the top opportunities, guiding a strategy that balances quick wins with transformative, long-term projects.</p>
+                <div class="chart-container h-[50vh] md:h-[500px]">
+                    <canvas id="useCaseBubbleChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="data-readiness" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Data: The Fuel for AI</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">The quality and accessibility of data are paramount. Our inventory reveals a mixed landscape. While some modern systems provide clean data, critical assets are trapped in silos or suffer from poor quality, requiring immediate attention.</p>
+                <div class="chart-container h-[40vh] md:h-96">
+                    <canvas id="dataReadinessBarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="process-inefficiency" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">From Manual Pain to Agentic Gain</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Mapping the current invoice process revealed significant manual effort and delays. An AI agent can transform this workflow, automating tasks from data entry to approval routing.</p>
+                <div class="relative grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-8">
+                    <div class="flowchart-step">
+                        <span class="font-bold">1. Invoice Received</span>
+                        <p class="text-sm text-gray-500">Manual Email Monitoring</p>
+                        <div class="flowchart-arrow hidden md:block"></div>
+                    </div>
+                    <div class="flowchart-step">
+                        <span class="font-bold">2. Data Entry & Match</span>
+                        <p class="text-sm text-gray-500">Manual Transcription & System Swapping</p>
+                        <div class="flowchart-arrow hidden md:block"></div>
+                    </div>
+                    <div class="flowchart-step">
+                        <span class="font-bold">3. Approval Chase</span>
+                        <p class="text-sm text-gray-500">Manual Email Forwarding & Follow-up</p>
+                        <div class="flowchart-arrow hidden md:block"></div>
+                    </div>
+                    <div class="flowchart-step">
+                        <span class="font-bold">4. Payment</span>
+                        <p class="text-sm text-gray-500">Process Complete</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">A Phased Roadmap to Transformation</h3>
+                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">We recommend an adaptive, multi-phase roadmap that builds capabilities incrementally while delivering continuous value. Foundational work in governance and culture runs parallel to implementation.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 1: Foundation & Pilot (Months 0-6)</h4>
+                        <p class="text-gray-700">Establish governance, launch AI literacy programs, and execute the high-ROI "Autonomous Invoice Processing" pilot. Prove the value and build momentum.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 2: Scale & Expand (Months 6-18)</h4>
+                        <p class="text-gray-700">Deploy 2-3 additional agentic solutions in Sales and HR. Mature governance processes and begin modernizing the legacy CRM system.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 3: Optimize & Transform (Months 18+)</h4>
+                        <p class="text-gray-700">Drive enterprise-wide adoption, establish an AI Center of Excellence (CoE), and begin exploring disruptive AI-driven business models.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="next-steps" class="text-center">
+             <div class="bg-[#001F3F] text-white rounded-lg shadow-md p-8">
+                <h3 class="text-3xl font-bold">Your Immediate Actions</h3>
+                <p class="mt-2 mb-6 max-w-2xl mx-auto">To maintain momentum, executive leadership should take these four critical steps within the next 30 days.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+                    <div class="bg-[#0074D9] p-4 rounded-lg">
+                        <p class="font-bold">1. Approve Governance</p>
+                        <p class="text-sm">Formally charter the AI Governance Committee to ensure a responsible rollout.</p>
+                    </div>
+                    <div class="bg-[#0074D9] p-4 rounded-lg">
+                        <p class="font-bold">2. Allocate Pilot Budget</p>
+                        <p class="text-sm">Greenlight the "Autonomous Invoice Processing Agent" pilot project.</p>
+                    </div>
+                    <div class="bg-[#0074D9] p-4 rounded-lg">
+                        <p class="font-bold">3. Launch Communication</p>
+                        <p class="text-sm">Announce the AI vision and roadmap to build excitement and manage expectations.</p>
+                    </div>
+                    <div class="bg-[#0074D9] p-4 rounded-lg">
+                        <p class="font-bold">4. Prioritize Tech Debt</p>
+                        <p class="text-sm">Commission the business case for accelerating the critical CRM modernization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-4 bg-gray-200 mt-12">
+        <p class="text-sm text-gray-600">&copy; 2025 ACME Corporation. Confidential and Proprietary. This infographic visualizes the findings of the Agentic Readiness Report.</p>
+    </footer>
+
+    <script>
+        const vibrantPalette = {
+            navy: '#001F3F',
+            blue: '#0074D9',
+            aqua: '#7FDBFF',
+            teal: '#39CCCC',
+            red: '#FF4136',
+            orange: '#FF851B',
+            yellow: '#FFDC00'
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const wrapLabel = (label, maxLength = 16) => {
+            if (label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        };
+
+        new Chart(document.getElementById('readinessRadarChart'), {
+            type: 'radar',
+            data: {
+                labels: [
+                    wrapLabel('Business & Strategic Alignment'), 
+                    wrapLabel('Data Management & AI Readiness'), 
+                    wrapLabel('Technology Infrastructure'), 
+                    wrapLabel('Cybersecurity, Governance & Compliance'), 
+                    wrapLabel('People & Culture')
+                ],
+                datasets: [{
+                    label: 'ACME Readiness Score',
+                    data: [4.0, 2.2, 2.5, 2.1, 2.8],
+                    backgroundColor: 'rgba(0, 116, 217, 0.2)',
+                    borderColor: vibrantPalette.blue,
+                    pointBackgroundColor: vibrantPalette.blue,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: vibrantPalette.blue
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { 
+                            font: { size: 12, weight: 'bold' },
+                            color: vibrantPalette.navy
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            max: 5,
+                            stepSize: 1,
+                            backdropColor: 'rgba(255, 255, 255, 0.75)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.labelIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('useCaseBubbleChart'), {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'FIN-01: Invoice Agent',
+                    data: [{ x: 4.65, y: 3.5, r: 25 }],
+                    backgroundColor: vibrantPalette.blue,
+                    borderColor: vibrantPalette.navy,
+                    hoverBackgroundColor: vibrantPalette.aqua
+                }, {
+                    label: 'SLS-01: Lead Scoring',
+                    data: [{ x: 4.55, y: 2, r: 20 }],
+                    backgroundColor: vibrantPalette.orange,
+                    borderColor: vibrantPalette.navy,
+                    hoverBackgroundColor: vibrantPalette.yellow
+                }, {
+                    label: 'HR-01: Onboarding',
+                    data: [{ x: 3.90, y: 4.5, r: 15 }],
+                    backgroundColor: vibrantPalette.teal,
+                    borderColor: vibrantPalette.navy,
+                    hoverBackgroundColor: vibrantPalette.aqua
+                }, {
+                    label: 'SLS-02: Forecasting',
+                    data: [{ x: 4.40, y: 2, r: 12 }],
+                    backgroundColor: 'rgba(255, 65, 54, 0.7)',
+                    borderColor: vibrantPalette.navy,
+                    hoverBackgroundColor: vibrantPalette.red
+                }, {
+                    label: 'FIN-02: Fin Close',
+                    data: [{ x: 4.20, y: 3, r: 10 }],
+                    backgroundColor: 'rgba(0, 116, 217, 0.5)',
+                    borderColor: vibrantPalette.navy,
+                    hoverBackgroundColor: vibrantPalette.blue
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Business Impact (TII Score)', font: { size: 14, weight: 'bold' } },
+                        min: 3.5,
+                        max: 5.0
+                    },
+                    y: {
+                        title: { display: true, text: 'Feasibility (Data & Tech Readiness)', font: { size: 14, weight: 'bold' } },
+                        min: 1,
+                        max: 5
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                const data = context.raw;
+                                label += `(Impact: ${data.x}, Feasibility: ${data.y})`;
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const dataReadinessLabels = [
+            wrapLabel('Financial Transactions'), 
+            wrapLabel('Customer Data (Legacy)'), 
+            wrapLabel('Employee Records (New)'), 
+            wrapLabel('Vendor Invoices'), 
+            wrapLabel('Purchase Orders'), 
+            wrapLabel('Web Analytics')
+        ];
+
+        new Chart(document.getElementById('dataReadinessBarChart'), {
+            type: 'bar',
+            data: {
+                labels: dataReadinessLabels,
+                datasets: [{
+                    label: 'Quality Score (1-5)',
+                    data: [3, 2, 4, 2, 3, 4],
+                    backgroundColor: vibrantPalette.blue,
+                    borderColor: vibrantPalette.navy,
+                    borderWidth: 1
+                }, {
+                    label: 'Accessibility Score (1-5)',
+                    data: [2, 2, 4, 1, 2, 4],
+                    backgroundColor: vibrantPalette.aqua,
+                    borderColor: vibrantPalette.navy,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 5,
+                        title: { display: true, text: 'Score (1-5)', font: { weight: 'bold' } }
+                    },
+                    y: {
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
