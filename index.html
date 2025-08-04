@@ -41,12 +41,11 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        .timeline-item::before {
+        .stage-item::before {
             content: '';
             position: absolute;
             left: -31px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -55,20 +54,24 @@
         }
         .dual-track-arrow {
             position: relative;
-            padding: 1rem;
+            padding: 1.5rem;
             background: linear-gradient(90deg, #003F7A, #0066CC);
             color: white;
             border-radius: 0.5rem;
             margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .dual-track-arrow::after {
             content: '→';
-            font-size: 2rem;
+            font-size: 2.5rem;
             line-height: 1;
             position: absolute;
-            right: 1rem;
+            right: 1.5rem;
             top: 50%;
             transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
@@ -182,34 +185,64 @@
         </section>
 
         <section id="journey" class="mb-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-[#003F7A]">The Journey: A Pragmatic, Dual-Track Roadmap</h2>
-                <p class="mt-4 text-lg text-gray-600">The pilot is the first step in a 36-month journey. Our pragmatic roadmap balances immediate value creation with long-term foundational investment through a dual-track strategy.</p>
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">A Phased Roadmap to Transformation: The 7-Stage Agentic Journey</h2>
+                <p class="mt-4 text-lg text-gray-600">Our recommendation is a comprehensive, 7-stage roadmap that ensures every aspect of the framework is addressed in a logical sequence, moving ACME from its current state to full AI integration and leadership.</p>
             </div>
-            <div class="mt-8">
-                <div class="relative pl-8 border-l-4 border-blue-200">
-                    <div class="timeline-item mb-12 pl-8">
-                        <h3 class="text-xl font-bold text-[#00529B]">Phase 1 (Months 0-6): Foundation & Ignition</h3>
-                        <p class="text-gray-600">Establish governance and launch the first pilot (FIN-01) to build momentum and prove initial value.</p>
-                    </div>
-                    <div class="timeline-item mb-12 pl-8">
-                        <h3 class="text-xl font-bold text-[#00529B]">Phase 2 (Months 7-18): Expansion & Modernization</h3>
-                        <p class="text-gray-600">Scale agentic solutions to new departments (Sales, HR) and address critical technical debt like the CRM migration.</p>
-                    </div>
-                    <div class="timeline-item pl-8">
-                        <h3 class="text-xl font-bold text-[#00529B]">Phase 3 (Months 19+): Enterprise Scaling & Fluency</h3>
-                        <p class="text-gray-600">Establish an AI Center of Excellence (CoE) and deploy advanced, cross-functional agents across the enterprise.</p>
-                    </div>
+            <div class="mt-10 relative pl-8 border-l-4 border-blue-200">
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 1: Agentic Readiness Rating (Complete)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Establish a comprehensive baseline of ACME's capabilities. <span class="font-bold text-green-600 ml-2">[✓ Complete]</span></p>
                 </div>
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="dual-track-arrow">
-                        <h4 class="font-bold text-xl">TRACK 1: VALUE IGNITION 💵🏆</h4>
-                        <p>Executing high-ROI pilots to build momentum and self-fund the journey.</p>
-                    </div>
-                    <div class="dual-track-arrow">
-                        <h4 class="font-bold text-xl">TRACK 2: FOUNDATIONAL REMEDIATION 💾🛡️</h4>
-                        <p>Systematically strengthening data, governance, and culture to enable scalable success.</p>
-                    </div>
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 2: Workforce Augmentation (Months 0-3)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Prepare the organization for a new way of working by focusing on people and collaboration.</p>
+                </div>
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 3: Governance, Security & Compliance (Months 2-5)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Create the essential guardrails for safe, secure, and responsible AI implementation.</p>
+                </div>
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 4: Workflow Enhancement (Months 5-9)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Streamline and optimize the specific business process targeted for the first AI pilot.</p>
+                </div>
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 5: Data Intelligence (Months 8-12)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Ensure the data that will fuel the AI agent is clean, accessible, and structured for success.</p>
+                </div>
+                <div class="stage-item relative pl-8 pb-10">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 6: Agentic Implementation (Months 12-18)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Develop, deploy, and scale the first true AI agent into the production environment.</p>
+                </div>
+                <div class="stage-item relative pl-8">
+                    <h3 class="text-xl font-bold text-[#00529B]">Stage 7: Adaptive AI Fluency (Months 18+)</h3>
+                    <p class="text-gray-600 mt-2"><span class="font-bold">Goal:</span> Cultivate a self-sustaining AI culture of continuous improvement and innovation.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <h3 class="text-2xl font-bold text-[#003F7A]">The Dual-Track Strategy</h3>
+                <p class="mt-2 text-lg text-gray-600 max-w-3xl mx-auto">This journey is powered by a dual-track strategy, balancing immediate wins with long-term capability building to create a virtuous cycle of investment and return.</p>
+            </div>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="dual-track-arrow">
+                    <h4 class="font-bold text-xl mb-2">TRACK 1: VALUE IGNITION 💵🏆</h4>
+                    <p>Executing high-ROI pilots to build momentum and self-fund the journey. This includes:</p>
+                    <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>FIN-01: Autonomous Invoicing</li>
+                        <li>SALES-01: Automated Lead Qualification</li>
+                        <li>HR-01: Intelligent Candidate Screening</li>
+                    </ul>
+                </div>
+                <div class="dual-track-arrow">
+                    <h4 class="font-bold text-xl mb-2">TRACK 2: FOUNDATIONAL REMEDIATION 💾🛡️</h4>
+                    <p>Systematically strengthening our core to enable scalable success through:</p>
+                     <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>AI Governance & Security Frameworks</li>
+                        <li>CRM Modernization & Data Integration</li>
+                        <li>Company-wide AI Literacy Programs</li>
+                    </ul>
                 </div>
             </div>
         </section>
