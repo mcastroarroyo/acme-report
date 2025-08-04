@@ -3,452 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACME Agentic AI Readiness Report</title>
+    <title>ACME Corporation - Agentic AI Readiness Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            height: 300px;
+            max-height: 350px;
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 400px;
+                height: 350px;
+                max-height: 400px;
             }
         }
         .kpi-card {
-            border-left: 4px solid #FF3A20;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .flowchart-step {
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #00529B;
+            border: 4px solid #D1E8FF;
+        }
+        .dual-track-arrow {
             position: relative;
             padding: 1rem;
-            background-color: #ffffff;
-            border: 2px solid #001F3F;
+            background: linear-gradient(90deg, #003F7A, #0066CC);
+            color: white;
             border-radius: 0.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            margin-top: 1rem;
         }
-        .flowchart-step:hover {
-            transform: translateY(-5px);
-        }
-        .flowchart-arrow {
+        .dual-track-arrow::after {
+            content: '→';
+            font-size: 2rem;
+            line-height: 1;
             position: absolute;
+            right: 1rem;
             top: 50%;
-            right: -2.5rem;
             transform: translateY(-50%);
-            width: 2rem;
-            height: 2px;
-            background-color: #001F3F;
-        }
-        .flowchart-arrow::after {
-            content: '';
-            position: absolute;
-            right: -2px;
-            top: -4px;
-            border: solid #001F3F;
-            border-width: 0 2px 2px 0;
-            display: inline-block;
-            padding: 4px;
-            transform: rotate(-45deg);
-        }
-        .timeline {
-            position: relative;
-            padding-left: 2.5rem;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: #0074D9;
-            border-radius: 2px;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -2.5rem;
-            top: 0.25rem;
-            transform: translateX(-48%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #FF3A20;
-            border: 4px solid #F3F4F6;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="text-gray-800">
 
-    <header class="bg-[#001F3F] text-white p-6 shadow-lg">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-extrabold tracking-tight">ACME Corporation</h1>
-            <p class="text-xl mt-2 text-[#7FDBFF]">Agentic AI Readiness Report: Executive Infographic</p>
-        </div>
+    <header class="bg-[#002B54] text-white p-6 sm:p-8 text-center">
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight">ACME's Agentic Future</h1>
+        <p class="text-lg md:text-xl mt-2 text-blue-200">A Data-Driven Roadmap to Transformation</p>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
 
-        <section id="executive-summary" class="mb-12">
-            <div class="text-center p-6 bg-white rounded-lg shadow-md">
-                <h2 class="text-3xl font-bold text-[#001F3F]">The Verdict: An AI Starter with Pockets of Excellence</h2>
-                <p class="text-6xl font-extrabold text-[#0074D9] my-4">58<span class="text-4xl">/100</span></p>
-                <p class="max-w-3xl mx-auto text-lg">ACME has a strong executive vision for AI but is held back by foundational gaps in data, technology, and governance. The path forward requires a dual-track approach: executing targeted pilots while simultaneously remediating core deficiencies.</p>
+        <section id="mandate" class="mb-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">The Strategic Mandate: Why We Must Act Now</h2>
+                <p class="mt-4 text-lg text-gray-600">To secure market leadership, ACME has set clear 3-year goals. Our assessment reveals that achieving them requires a fundamental operational shift, as current manual processes directly inflate costs and constrain our ability to scale.</p>
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="kpi-card">
+                    <div class="text-5xl text-[#00529B]">⚙️</div>
+                    <h3 class="text-xl font-bold mt-2">Reduce Overhead</h3>
+                    <p class="text-4xl font-extrabold text-[#007FFF] mt-2">20%</p>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-5xl text-[#00529B]">📈</div>
+                    <h3 class="text-xl font-bold mt-2">Increase Market Share</h3>
+                    <p class="text-4xl font-extrabold text-[#007FFF] mt-2">15%</p>
+                </div>
+                <div class="kpi-card">
+                    <div class="text-5xl text-[#00529B]">❤️</div>
+                    <h3 class="text-xl font-bold mt-2">Enhance Retention</h3>
+                    <p class="text-4xl font-extrabold text-[#007FFF] mt-2">10%</p>
+                </div>
+            </div>
+            <div class="mt-6 text-center bg-blue-50 border-l-4 border-[#007FFF] p-4 rounded-r-lg max-w-3xl mx-auto">
+                <p class="font-semibold text-gray-700">Our assessment confirms these goals are at risk. Incremental improvements are no longer sufficient; we must automate complex workflows to unlock the required value.</p>
             </div>
         </section>
 
-        <section id="readiness-scores" class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Overall Readiness Breakdown</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Our assessment evaluated ACME across five critical domains. The radar chart below visualizes the imbalance between the strong strategic ambition and the developing foundational capabilities.</p>
-                <div class="chart-container h-[40vh] md:h-96">
-                    <canvas id="readinessRadarChart"></canvas>
+        <section id="diagnosis" class="mb-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">The Diagnosis: An "AI Starter" with Untapped Potential</h2>
+                <p class="mt-4 text-lg text-gray-600">A six-week assessment provides a rigorous, evidence-based evaluation of our capacity to adopt agentic AI, revealing a clear diagnosis of our strengths and weaknesses.</p>
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl font-bold text-gray-700">Overall Agentic Readiness Score</h3>
+                    <p class="text-8xl font-black text-[#00529B] my-4">58<span class="text-4xl">/100</span></p>
+                    <span class="inline-block bg-[#FFD700] text-[#003F7A] text-lg font-bold px-4 py-2 rounded-full">AI STARTER with Pockets of Excellence</span>
+                    <p class="mt-6 text-gray-600">This score indicates strong strategic ambition but highlights that foundational pillars like data, technology, and governance require significant investment before enterprise-wide scaling is feasible.</p>
                 </div>
-            </div>
-        </section>
-        
-        <section id="kpis" class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
-                <h4 class="text-xl font-bold text-[#001F3F]">High-Impact Opportunity</h4>
-                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">>80%</p>
-                <p class="text-gray-600">Potential reduction in manual invoice processing time with the top-ranked AI pilot project.</p>
-            </div>
-            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
-                <h4 class="text-xl font-bold text-[#001F3F]">Projected Pilot ROI</h4>
-                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">>2x</p>
-                <p class="text-gray-600">Return on investment projected within 18 months for the "Autonomous Invoice Processing Agent".</p>
-            </div>
-            <div class="kpi-card bg-white p-6 rounded-lg shadow-md">
-                <h4 class="text-xl font-bold text-[#001F3F]">Critical Blocker</h4>
-                <p class="text-4xl font-extrabold text-[#FF3A20] my-2">5/5</p>
-                <p class="text-gray-600">Technical debt score for the legacy CRM, making its modernization a high-priority dependency.</p>
-            </div>
-        </section>
-
-        <section id="use-case-prioritization" class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Prioritizing the Path to Value</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">We analyzed potential AI use cases based on their business impact (TII Score) and implementation feasibility. The bubble chart below visualizes the top opportunities, guiding a strategy that balances quick wins with transformative, long-term projects.</p>
-                <div class="chart-container h-[50vh] md:h-[500px]">
-                    <canvas id="useCaseBubbleChart"></canvas>
-                </div>
-            </div>
-        </section>
-        
-        <section id="data-readiness" class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">Data: The Fuel for AI</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">The quality and accessibility of data are paramount. Our inventory reveals a mixed landscape. While some modern systems provide clean data, critical assets are trapped in silos or suffer from poor quality, requiring immediate attention.</p>
-                <div class="chart-container h-[40vh] md:h-96">
-                    <canvas id="dataReadinessBarChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="process-inefficiency" class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">From Manual Pain to Agentic Gain</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Mapping the current invoice process revealed significant manual effort and delays. An AI agent can transform this workflow, automating tasks from data entry to approval routing.</p>
-                <div class="relative grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-8">
-                    <div class="flowchart-step">
-                        <span class="font-bold">1. Invoice Received</span>
-                        <p class="text-sm text-gray-500">Manual Email Monitoring</p>
-                        <div class="flowchart-arrow hidden md:block"></div>
-                    </div>
-                    <div class="flowchart-step">
-                        <span class="font-bold">2. Data Entry & Match</span>
-                        <p class="text-sm text-gray-500">Manual Transcription & System Swapping</p>
-                        <div class="flowchart-arrow hidden md:block"></div>
-                    </div>
-                    <div class="flowchart-step">
-                        <span class="font-bold">3. Approval Chase</span>
-                        <p class="text-sm text-gray-500">Manual Email Forwarding & Follow-up</p>
-                        <div class="flowchart-arrow hidden md:block"></div>
-                    </div>
-                    <div class="flowchart-step">
-                        <span class="font-bold">4. Payment</span>
-                        <p class="text-sm text-gray-500">Process Complete</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-center mb-4 text-gray-700">The Readiness Gap</h3>
+                    <div class="chart-container">
+                        <canvas id="readinessRadarChart"></canvas>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="roadmap" class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-2xl font-bold text-center mb-6 text-[#001F3F]">A Phased Roadmap to Transformation</h3>
-                <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">We recommend an adaptive, multi-phase roadmap that builds capabilities incrementally while delivering continuous value. Foundational work in governance and culture runs parallel to implementation.</p>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 1: Foundation & Pilot (Months 0-6)</h4>
-                        <p class="text-gray-700">Establish governance, launch AI literacy programs, and execute the high-ROI "Autonomous Invoice Processing" pilot. Prove the value and build momentum.</p>
+        <section id="prescription" class="mb-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">The Prescription: A High-ROI Foundational Pilot</h2>
+                <p class="mt-4 text-lg text-gray-600">Given our diagnosis, we recommend a precise, strategic "quick win" pilot project to deliver compelling ROI while simultaneously remediating foundational gaps.</p>
+            </div>
+            <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Pilot Project: Autonomous Invoice Processing Agent (FIN-01)</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-8">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-lg text-blue-800 font-semibold">Pilot Investment</p>
+                        <p class="text-4xl font-extrabold text-[#00529B]">$120,000</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 2: Scale & Expand (Months 6-18)</h4>
-                        <p class="text-gray-700">Deploy 2-3 additional agentic solutions in Sales and HR. Mature governance processes and begin modernizing the legacy CRM system.</p>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="text-lg text-green-800 font-semibold">Projected Annual Savings</p>
+                        <p class="text-4xl font-extrabold text-green-600">$250,000+</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <h4 class="font-bold text-xl text-[#0074D9]">Phase 3: Optimize & Transform (Months 18+)</h4>
-                        <p class="text-gray-700">Drive enterprise-wide adoption, establish an AI Center of Excellence (CoE), and begin exploring disruptive AI-driven business models.</p>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <p class="text-lg text-yellow-800 font-semibold">Return on Investment</p>
+                        <p class="text-4xl font-extrabold text-yellow-600">>2x</p>
+                        <p class="text-yellow-700">Within 18 Months</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div>
+                        <h4 class="text-xl font-bold text-center text-red-600 mb-4">Before: Manual & Slow</h4>
+                        <div class="border-2 border-red-200 bg-red-50 p-4 rounded-lg space-y-3">
+                            <div class="flex items-center"><span class="text-2xl mr-3">⌨️</span> Manual data entry from PDFs</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">📧</span> Chasing approvals via email</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">⏰</span> Days to process a single invoice</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">❌</span> High potential for human error</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-center text-green-600 mb-4">After: Automated & Fast</h4>
+                        <div class="border-2 border-green-200 bg-green-50 p-4 rounded-lg space-y-3">
+                            <div class="flex items-center"><span class="text-2xl mr-3">🤖</span> >80% reduction in manual work</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">🧑‍💻</span> Team focuses on high-value exceptions</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">⏱️</span> Hours to process thousands of invoices</div>
+                            <div class="flex items-center"><span class="text-2xl mr-3">✅</span> >95% error reduction</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-8 bg-gray-100 p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-[#003F7A]">More Than ROI: A Foundational Forcing Function</h4>
+                    <p class="mt-2 text-gray-600">This pilot is designed to do more than save money. It forces us to solve a specific, high-value data integration problem, building the foundational skills and governance 'muscle' needed for future, more complex AI initiatives.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="mb-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">The Journey: A Pragmatic, Dual-Track Roadmap</h2>
+                <p class="mt-4 text-lg text-gray-600">The pilot is the first step in a 36-month journey. Our pragmatic roadmap balances immediate value creation with long-term foundational investment through a dual-track strategy.</p>
+            </div>
+            <div class="mt-8">
+                <div class="relative pl-8 border-l-4 border-blue-200">
+                    <div class="timeline-item mb-12 pl-8">
+                        <h3 class="text-xl font-bold text-[#00529B]">Phase 1 (Months 0-6): Foundation & Ignition</h3>
+                        <p class="text-gray-600">Establish governance and launch the first pilot (FIN-01) to build momentum and prove initial value.</p>
+                    </div>
+                    <div class="timeline-item mb-12 pl-8">
+                        <h3 class="text-xl font-bold text-[#00529B]">Phase 2 (Months 7-18): Expansion & Modernization</h3>
+                        <p class="text-gray-600">Scale agentic solutions to new departments (Sales, HR) and address critical technical debt like the CRM migration.</p>
+                    </div>
+                    <div class="timeline-item pl-8">
+                        <h3 class="text-xl font-bold text-[#00529B]">Phase 3 (Months 19+): Enterprise Scaling & Fluency</h3>
+                        <p class="text-gray-600">Establish an AI Center of Excellence (CoE) and deploy advanced, cross-functional agents across the enterprise.</p>
+                    </div>
+                </div>
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="dual-track-arrow">
+                        <h4 class="font-bold text-xl">TRACK 1: VALUE IGNITION 💵🏆</h4>
+                        <p>Executing high-ROI pilots to build momentum and self-fund the journey.</p>
+                    </div>
+                    <div class="dual-track-arrow">
+                        <h4 class="font-bold text-xl">TRACK 2: FOUNDATIONAL REMEDIATION 💾🛡️</h4>
+                        <p>Systematically strengthening data, governance, and culture to enable scalable success.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="next-steps" class="text-center">
-             <div class="bg-[#001F3F] text-white rounded-lg shadow-md p-8">
-                <h3 class="text-3xl font-bold">Your Immediate Actions</h3>
-                <p class="mt-2 mb-6 max-w-2xl mx-auto">To maintain momentum, executive leadership should take these four critical steps within the next 30 days.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-                    <div class="bg-[#0074D9] p-4 rounded-lg">
-                        <p class="font-bold">1. Approve Governance</p>
-                        <p class="text-sm">Formally charter the AI Governance Committee to ensure a responsible rollout.</p>
-                    </div>
-                    <div class="bg-[#0074D9] p-4 rounded-lg">
-                        <p class="font-bold">2. Allocate Pilot Budget</p>
-                        <p class="text-sm">Greenlight the "Autonomous Invoice Processing Agent" pilot project.</p>
-                    </div>
-                    <div class="bg-[#0074D9] p-4 rounded-lg">
-                        <p class="font-bold">3. Launch Communication</p>
-                        <p class="text-sm">Announce the AI vision and roadmap to build excitement and manage expectations.</p>
-                    </div>
-                    <div class="bg-[#0074D9] p-4 rounded-lg">
-                        <p class="font-bold">4. Prioritize Tech Debt</p>
-                        <p class="text-sm">Commission the business case for accelerating the critical CRM modernization.</p>
-                    </div>
+        <section id="action" class="mb-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-[#003F7A]">The First Step: A Clear Call to Action</h2>
+                <p class="mt-4 text-lg text-gray-600">To translate this report into immediate momentum, leadership must take clear, urgent, and actionable decisions within the next 30 days.</p>
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-red-100 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="font-bold text-red-800">Our Single Largest Risk</h3>
+                    <p class="text-lg text-red-700">The complete absence of a formal AI governance framework.</p>
                 </div>
+                <div class="bg-green-100 border-l-4 border-green-500 p-6 rounded-r-lg">
+                    <h3 class="font-bold text-green-800">Our Highest-Priority Action</h3>
+                    <p class="text-lg text-green-700">Approve the AI Governance Framework and charter the committee.</p>
+                </div>
+            </div>
+            <div class="mt-8 max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+                 <h3 class="text-2xl font-bold text-center mb-4 text-gray-700">30-Day Action Checklist</h3>
+                 <ol class="space-y-4">
+                     <li class="flex items-start"><span class="font-bold text-[#00529B] text-xl mr-3">1.</span> <div><span class="font-bold">Approve AI Governance Framework:</span> Formally charter the AI Governance Committee to mitigate risk.</div></li>
+                     <li class="flex items-start"><span class="font-bold text-[#00529B] text-xl mr-3">2.</span> <div><span class="font-bold">Allocate Pilot Budget:</span> Greenlight the $120,000 investment for the FIN-01 pilot to begin value creation.</div></li>
+                     <li class="flex items-start"><span class="font-bold text-[#00529B] text-xl mr-3">3.</span> <div><span class="font-bold">Launch Communication Strategy:</span> Empower leadership to announce the vision and build organizational buy-in.</div></li>
+                     <li class="flex items-start"><span class="font-bold text-[#00529B] text-xl mr-3">4.</span> <div><span class="font-bold">Prioritize Technical Debt:</span> Formally approve the business case to accelerate the critical CRM modernization project.</div></li>
+                 </ol>
             </div>
         </section>
 
     </main>
-
-    <footer class="text-center p-4 bg-gray-200 mt-12">
-        <p class="text-sm text-gray-600">&copy; 2025 ACME Corporation. Confidential and Proprietary. This infographic visualizes the findings of the Agentic Readiness Report.</p>
+    
+    <footer class="text-center p-6 bg-[#002B54] text-blue-200">
+        <p>&copy; 2025 ACME Corporation. All Rights Reserved.</p>
     </footer>
 
     <script>
-        const vibrantPalette = {
-            navy: '#001F3F',
-            blue: '#0074D9',
-            aqua: '#7FDBFF',
-            teal: '#39CCCC',
-            red: '#FF4136',
-            orange: '#FF851B',
-            yellow: '#FFDC00'
-        };
-        
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-                return label.join(' ');
-            }
-            return label;
-        };
-
-        const wrapLabel = (label, maxLength = 16) => {
-            if (label.length <= maxLength) return label;
+        function wrapLabels(label) {
+            const max_width = 16;
             const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > maxLength) {
-                    lines.push(currentLine.trim());
-                    currentLine = word;
+            let lines = [];
+            let current_line = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((current_line + ' ' + words[i]).length > max_width) {
+                    lines.push(current_line);
+                    current_line = words[i];
                 } else {
-                    currentLine = (currentLine + ' ' + word).trim();
+                    current_line += ' ' + words[i];
                 }
             }
-            if (currentLine) lines.push(currentLine);
+            lines.push(current_line);
             return lines;
+        }
+
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
         };
 
-        new Chart(document.getElementById('readinessRadarChart'), {
+        const radarCtx = document.getElementById('readinessRadarChart').getContext('2d');
+        const radarLabels = [
+            'Business & Strategic Alignment',
+            'People & Culture',
+            'Technology Infrastructure',
+            'Data Management & AI Readiness',
+            'Cybersecurity, Governance & Compliance'
+        ];
+
+        const wrappedRadarLabels = radarLabels.map(label => {
+            if (label.length > 16) {
+                return wrapLabels(label);
+            }
+            return label;
+        });
+
+        new Chart(radarCtx, {
             type: 'radar',
             data: {
-                labels: [
-                    wrapLabel('Business & Strategic Alignment'), 
-                    wrapLabel('Data Management & AI Readiness'), 
-                    wrapLabel('Technology Infrastructure'), 
-                    wrapLabel('Cybersecurity, Governance & Compliance'), 
-                    wrapLabel('People & Culture')
-                ],
+                labels: wrappedRadarLabels,
                 datasets: [{
-                    label: 'ACME Readiness Score',
-                    data: [4.0, 2.2, 2.5, 2.1, 2.8],
-                    backgroundColor: 'rgba(0, 116, 217, 0.2)',
-                    borderColor: vibrantPalette.blue,
-                    pointBackgroundColor: vibrantPalette.blue,
+                    label: 'Readiness Score (out of 5)',
+                    data: [4.0, 2.8, 2.5, 2.2, 2.1],
+                    backgroundColor: 'rgba(0, 127, 255, 0.2)',
+                    borderColor: '#007FFF',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#007FFF',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: vibrantPalette.blue
+                    pointHoverBorderColor: '#007FFF'
                 }]
             },
             options: {
+                ...tooltipTitleCallback,
                 maintainAspectRatio: false,
                 scales: {
                     r: {
-                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
-                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
-                        pointLabels: { 
-                            font: { size: 12, weight: 'bold' },
-                            color: vibrantPalette.navy
+                        angleLines: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            color: '#003F7A'
                         },
                         ticks: {
                             beginAtZero: true,
                             max: 5,
                             stepSize: 1,
-                            backdropColor: 'rgba(255, 255, 255, 0.75)'
+                            backdropColor: 'rgba(255, 255, 255, 0.75)',
+                            color: '#6b7280'
                         }
                     }
                 },
                 plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.labelIndex];
-                                return Array.isArray(label) ? label.join(' ') : label;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        new Chart(document.getElementById('useCaseBubbleChart'), {
-            type: 'bubble',
-            data: {
-                datasets: [{
-                    label: 'FIN-01: Invoice Agent',
-                    data: [{ x: 4.65, y: 3.5, r: 25 }],
-                    backgroundColor: vibrantPalette.blue,
-                    borderColor: vibrantPalette.navy,
-                    hoverBackgroundColor: vibrantPalette.aqua
-                }, {
-                    label: 'SLS-01: Lead Scoring',
-                    data: [{ x: 4.55, y: 2, r: 20 }],
-                    backgroundColor: vibrantPalette.orange,
-                    borderColor: vibrantPalette.navy,
-                    hoverBackgroundColor: vibrantPalette.yellow
-                }, {
-                    label: 'HR-01: Onboarding',
-                    data: [{ x: 3.90, y: 4.5, r: 15 }],
-                    backgroundColor: vibrantPalette.teal,
-                    borderColor: vibrantPalette.navy,
-                    hoverBackgroundColor: vibrantPalette.aqua
-                }, {
-                    label: 'SLS-02: Forecasting',
-                    data: [{ x: 4.40, y: 2, r: 12 }],
-                    backgroundColor: 'rgba(255, 65, 54, 0.7)',
-                    borderColor: vibrantPalette.navy,
-                    hoverBackgroundColor: vibrantPalette.red
-                }, {
-                    label: 'FIN-02: Fin Close',
-                    data: [{ x: 4.20, y: 3, r: 10 }],
-                    backgroundColor: 'rgba(0, 116, 217, 0.5)',
-                    borderColor: vibrantPalette.navy,
-                    hoverBackgroundColor: vibrantPalette.blue
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        title: { display: true, text: 'Business Impact (TII Score)', font: { size: 14, weight: 'bold' } },
-                        min: 3.5,
-                        max: 5.0
-                    },
-                    y: {
-                        title: { display: true, text: 'Feasibility (Data & Tech Readiness)', font: { size: 14, weight: 'bold' } },
-                        min: 1,
-                        max: 5
-                    }
-                },
-                plugins: {
-                    legend: { position: 'bottom' },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                const data = context.raw;
-                                label += `(Impact: ${data.x}, Feasibility: ${data.y})`;
-                                return label;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        const dataReadinessLabels = [
-            wrapLabel('Financial Transactions'), 
-            wrapLabel('Customer Data (Legacy)'), 
-            wrapLabel('Employee Records (New)'), 
-            wrapLabel('Vendor Invoices'), 
-            wrapLabel('Purchase Orders'), 
-            wrapLabel('Web Analytics')
-        ];
-
-        new Chart(document.getElementById('dataReadinessBarChart'), {
-            type: 'bar',
-            data: {
-                labels: dataReadinessLabels,
-                datasets: [{
-                    label: 'Quality Score (1-5)',
-                    data: [3, 2, 4, 2, 3, 4],
-                    backgroundColor: vibrantPalette.blue,
-                    borderColor: vibrantPalette.navy,
-                    borderWidth: 1
-                }, {
-                    label: 'Accessibility Score (1-5)',
-                    data: [2, 2, 4, 1, 2, 4],
-                    backgroundColor: vibrantPalette.aqua,
-                    borderColor: vibrantPalette.navy,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        max: 5,
-                        title: { display: true, text: 'Score (1-5)', font: { weight: 'bold' } }
-                    },
-                    y: {
-                        ticks: {
-                            font: { size: 10 }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: { position: 'top' },
-                    tooltip: {
-                        callbacks: {
-                           title: tooltipTitleCallback
-                        }
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
                     }
                 }
             }
